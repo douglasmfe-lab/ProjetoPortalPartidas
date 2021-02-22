@@ -16,21 +16,23 @@
 	<h2>Cadastro de novas partidas</h2>
 	
 	<h:form>
-		<h:panelGrid columns="2">
-			<h:outputText value="Nome do Evento"/>
-			<h:inputText  value="#{beanPartida.partida.nomeEvento}"/>
-				
-			<h:outputText value="Data"/>
-			<h:inputText  value="#{beanPartida.partida.data}"/>
-			
-			<h:outputText value="Hora"/>
-			<h:inputText  value="#{beanPartida.partida.hora}"/>
-			
-			<h:outputText  value="Senha"/>
-			<h:inputSecret value="#{beanPartida.partida.local}"/>
-			<h:outputText/>
-			<h:commandButton value="Adicionar" action="#{beanPartida.add}" />
-		</h:panelGrid>
+		<fieldset>
+			<legend>Dados da Partida</legend>
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Nome do Evento" for="nome"/>
+					<h:inputText id="nome" value="#{beanPartida.partida.nomeEvento}"/>
+						
+					<h:outputLabel value="Data" for="data"/>
+					<h:inputText id="data" value="#{beanPartida.partida.data}"/>
+					
+					<h:outputLabel value="Hora" for="hora"/>
+					<h:inputText id="hora" value="#{beanPartida.partida.hora}"/>
+					
+					<h:outputLabel  value="Local" for="local"/>
+					<h:inputSecret id="local" value="#{beanPartida.partida.local}"/>
+					<h:commandButton value="Adicionar" action="#{beanPartida.add}" />
+				</h:panelGrid>
+		</fieldset>
 	</h:form>
 	
 	<h3>Lista de Partidas:</h3>

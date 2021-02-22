@@ -2,19 +2,26 @@ package br.com.projetoPartidas.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Pessoa implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private Long id;
+	@Id @GeneratedValue
+	private Integer id;
+	
 	private String nome;
 	private String apelido;
 	private String email;
 	private Integer senha;
 	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getNome() {

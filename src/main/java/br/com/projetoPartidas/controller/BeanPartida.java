@@ -24,10 +24,6 @@ public class BeanPartida implements Serializable {
 		return partida;
 	}
 
-	public void setPartida(Partida partida) {
-		this.partida = partida;
-	}
-
 	public List<Partida> getPartidaList() {
 		return partidaList;
 	}

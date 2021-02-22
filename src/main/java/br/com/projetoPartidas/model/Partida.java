@@ -3,19 +3,26 @@ package br.com.projetoPartidas.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Partida implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-	private Long id;
+	
+	@Id @GeneratedValue
+	private Integer id;
+	
 	private String nomeEvento;
 	private Date data;
 	private Date hora;
 	private String local;
 		
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getNomeEvento() {
