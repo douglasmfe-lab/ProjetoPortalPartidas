@@ -8,14 +8,17 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import br.com.projetoPartidas.dao.PessoaDao;
 import br.com.projetoPartidas.model.Pessoa;
 
 @Named("beanPessoa")
 @SessionScoped
 public class BeanPessoa implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Inject
+	PessoaDao dao;
+
 	Pessoa pessoa = new Pessoa();
 	
 	private List<Pessoa> pessoaList = new ArrayList<>();
@@ -25,13 +28,18 @@ public class BeanPessoa implements Serializable {
 	}
 
 	public List<Pessoa> getPessoaList() {
+		pessoaList = dao.listAll();
 		return pessoaList;
 	}
 
 	public String add() {
-		pessoaList.add(pessoa);
+		dao.adiciona(pessoa);
 		cleanList();
-		return null;
+		return "usuario.xhtml?faces-redirect=true";
+	}
+	
+	public void deletaPessoa() {
+		dao.deleta(pessoa);
 	}
 	
 	public void cleanList() {
