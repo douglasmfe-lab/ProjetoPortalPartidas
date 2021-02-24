@@ -9,6 +9,8 @@ import br.com.projetoPartidas.model.Partida;
 
 public class PartidaDao implements DAO<Partida>, Serializable {
 	private static final long serialVersionUID = 1L;
+	
+	
 
 	@Override
 	public void adiciona(Partida t) {
@@ -25,6 +27,7 @@ public class PartidaDao implements DAO<Partida>, Serializable {
 		}
 	}
 
+	
 	@Override
 	public void deleta(Partida t) {
 		EntityManager manager = JpaUtil.getEntityManager();
@@ -49,5 +52,4 @@ public class PartidaDao implements DAO<Partida>, Serializable {
 		EntityManager manager = JpaUtil.getEntityManager();
 		return manager.createQuery("select p from Partida p").getResultList();
 	}
-
 }

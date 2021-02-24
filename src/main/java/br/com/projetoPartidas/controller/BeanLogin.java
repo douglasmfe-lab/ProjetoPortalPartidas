@@ -2,44 +2,24 @@ package br.com.projetoPartidas.controller;
 
 import java.io.Serializable;
 
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.inject.Named;
 
-import br.com.projetoPartidas.dao.PessoaDao;
 import br.com.projetoPartidas.model.Pessoa;
 
+@Named("beanLogin")
 public class BeanLogin implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-	private Pessoa pessoa = new Pessoa();
-
+	
 	@Inject
-	PessoaDao dao;
-
-	@Inject
-	FacesContext context;
-
-	public String efetuarLogin() {
-//		boolean existe = dao.existe(this.pessoa);// continuar implantar amanhã
-		if (true) {
-			context.getExternalContext().getSessionMap().put("PessoaLogado", this.pessoa);
-
-			return "usuario?faces-redirect=true";
-		}
-
-	//	context.getExternalContext().getFlash().setKeepMessages(true);
-//		context.addMessage(null, new FacesMessage("Usuário não encontrado")); continuar implantar amanhã
-
-		return "login?faces-redirect=true";
-	}
-
-	public String deslogar() {
-		context.getExternalContext().getSessionMap().remove("PessoaLogado");
-
-		return "login?faces-redirect=true";
-	}
-
+	private Pessoa pessoa;
+	
 	public Pessoa getPessoa() {
 		return pessoa;
+	}
+	
+	public String efetuarLogin() {
+		System.out.println("Fazendo login user " + this.pessoa.getNome());
+		return "partida?faces-redirect=true";
 	}
 }

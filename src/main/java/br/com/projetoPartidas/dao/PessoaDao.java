@@ -2,13 +2,13 @@ package br.com.projetoPartidas.dao;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.EntityManager;
+
 import br.com.projetoPartidas.model.Pessoa;
 
 public class PessoaDao implements Serializable, DAO<Pessoa> {
 	private static final long serialVersionUID = 1L;
-
-	private DAO<Pessoa> dao;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -36,7 +36,6 @@ public class PessoaDao implements Serializable, DAO<Pessoa> {
 		} finally {
 			manager.close();
 		}
-
 	}
 	
 	@Override
@@ -55,6 +54,5 @@ public class PessoaDao implements Serializable, DAO<Pessoa> {
 			manager.close();
 		}
 	}
-
 	
 }

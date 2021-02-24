@@ -1,17 +1,48 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-			xmlns:h="http://xmlns.jcp.org/jsf/html"
-			xmlns:f="http://xmlns.jcp.org/jsf/core"
-			xmlns:p="http://primefaces.org/ui">
-<h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>teste</title>
-</h:head>
-<h:body>
-	<h1>Hello World!</h1>
-	<p:button value="teste primefaces"></p:button>
-	
-	<p:calendar/>
-</h:body>
-</html>
+<ui:composition template="/WEB-INF/template/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="corpo">
+
+		<h1 align="center">Portal das Peladas.com</h1>
+
+		<form id="login">
+			<p:panelGrid style="border: none">
+				<h5 style="margin-top: 0">Login</h5>
+				
+				<span class="ui-float-label"> 
+					<p:outputLabel for="email" /> 
+					<p:inputText id="email" value="#{beanLogin.pessoa.email}" required="true" /> 
+					<f:passThroughAttribute name="type" value="email"/>
+					<p:message for="email" id="messageEmail"/>
+				</span>
+
+				<h5>Senha</h5>
+
+				<span class="ui-float-label">
+				<p:outputLabel for="senha"/> 
+				<p:password id="senha" value="#{beanLogin.pessoa.senha}" required="true" />
+					<f:passThroughAttribute name="type" value="password"/>
+					<p:message for="senha" id="messageSenha"/>
+				</span>
+
+			</p:panelGrid>
+			
+			<br/>
+			
+			
+			<p:panelGrid collum="2" style="border: none">
+				
+				<p:outputLabel />
+				
+				<p:commandButton value="Entrar" action="#{beanLogin.efetuarLogin}" />
+
+				<p:commandButton value="Registrar"/>
+			</p:panelGrid>
+		</form>
+
+	</ui:define>
+</ui:composition>

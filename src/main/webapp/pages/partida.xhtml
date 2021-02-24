@@ -1,53 +1,82 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="/WEB-INF/template/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Cadastro de Partidas</title>
-</h:head>
-<h:body>
-	<h1 align="center">Portal das Partidas.com</h1>
+	<ui:define name="corpo">
+	
+	<h1 align="center">Portal das Peladas.com</h1>
 	<h2>Cadastro de novas partidas</h2>
 
-	<h:form>
+	<h:form id="form1">
 		<fieldset>
+			
 			<legend>Dados da Partida</legend>
-			<h:panelGrid columns="2">
-				<h:outputLabel value="Nome do Evento" for="nome" />
-				<h:inputText id="nome" value="#{beanPartida.partida.nomeEvento}" />
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Nome do Evento" for="nome" />
+				<p:inputText id="nome" value="#{beanPartida.partida.nomeEvento}" required="true" requiredMessage="O nome é obrigatório!" size="30" />
 
-				<h:outputLabel value="Data" for="data" />
-				<h:inputText id="dateInput" label="Date"
-					value="#{beanPartida.partida.data}">
+				<p:outputLabel value="Data" for="data" />
+				<p:inputText id="data" label="Date"
+					value="#{beanPartida.partida.data}" required="true" requiredMessage="A data é obrigatória!" size="30">
 					<f:convertDateTime pattern="dd/mm/yyyy" />
-				</h:inputText>
+				</p:inputText>
 
-				<h:outputLabel value="Hora" for="hora" />
-				<h:inputText id="hora" value="#{beanPartida.partida.hora}" >
+				<p:outputLabel value="Hora" for="hora" />
+				<p:inputText id="hora" value="#{beanPartida.partida.hora}" size="30" >
 				<f:convertDateTime pattern="HH:mm:ss" />
-				</h:inputText>
+				</p:inputText>
 
-				<h:outputLabel value="Local" for="local" />
-				<h:inputText id="local" value="#{beanPartida.partida.local}" />
-				<h:commandButton value="Adicionar" action="#{beanPartida.add}" />
-
-
-			</h:panelGrid>
+				<p:outputLabel value="Local" for="local" />
+				<p:inputText id="local" value="#{beanPartida.partida.local}" required="true" requiredMessage="O local é obrigatório!" size="30" />
+			</p:panelGrid>
+			
+				<br/>
+				<p:outputLabel/>
+				<p:commandButton value="Adicionar" action="#{beanPartida.add}" update="form1 table1" />
 		</fieldset>
 	</h:form>
 
-	<h3>Lista de Partidas:</h3>
-	<h:dataTable value="#{beanPartida.partidaList}" var="p" border="2">
-		<h:column>#{p.nomeEvento}</h:column>
-		<h:column>#{p.data}</h:column>
-		<h:column>#{p.hora}</h:column>
-		<h:column>#{p.local}</h:column>
-	</h:dataTable>
+	<h2>Lista de Partidas:</h2>
+	<p:dataTable value="#{beanPartida.partidaList}" styleClass="center-table" var="p" border="2" id="table1">
+		<p:column >
+		<f:facet name="header">Nome</f:facet>
+			#{p.nomeEvento}
+		</p:column>
+		
+		<p:column>
+		<f:facet name="header">Data</f:facet>
+			#{p.data}
+		</p:column>
+		
+		<p:column>
+		<f:facet name="header">Hora</f:facet>
+			#{p.hora}
+		</p:column>
+		
+		<p:column>
+			<f:facet name="header">Hora</f:facet>
+			#{p.local}
+		</p:column>
+		
+		<p:column headerText="Inscrição" width="90">
+				<p:commandButton type="button" value="Participar" styleClass="ui-button-success" />
+		</p:column>
+		
+		<p:column headerText="Convidar" width="70">
+				<p:commandButton type="button" value="E-mail" styleClass="ui-button-success" />
+		</p:column>
+		
+		<p:column headerText="Excluir" width="70">
+				<p:commandButton type="button" value="Remover" styleClass="ui-button-success" />
+				<f:facet name="header">Excluir</f:facet>
+				#{beanPartida.partida.nomeEvento}
+		</p:column>
+		
+		
+	</p:dataTable>
 
-</h:body>
-</html>
+</ui:define>
+</ui:composition>
