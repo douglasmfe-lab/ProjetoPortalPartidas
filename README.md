@@ -1,4 +1,4 @@
-# Projeto Portal Peladas: Aplicação Javaweb com JSF/Hibernate/PostgreSQL
+# Projeto Portal Peladas: Aplicação JavaWeb com JSF/Hibernate/PostgreSQL
 
 Tópicos Abordados:
 
